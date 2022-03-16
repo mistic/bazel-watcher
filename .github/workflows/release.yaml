@@ -41,15 +41,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
 
       - name: Install Bazelisk
         run: npm --global install @bazel/bazelisk@latest
+
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Build ibazel 
         run: bazel build //ibazel:ibazel --config release ${{ matrix.build_flags }}
